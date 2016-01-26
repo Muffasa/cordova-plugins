@@ -29,4 +29,5 @@
     <plugin name="cordova.plugins.diagnostic" spec="~2.3.10" />
     <engine name="android" spec="~5.0.0" />
     <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
 </widget>
