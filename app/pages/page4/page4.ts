@@ -2,9 +2,9 @@ import {Page} from 'ionic-framework/ionic';
 
 
 @Page({
-  templateUrl: 'build/pages/page3/page3.html'
+  templateUrl: 'build/pages/page4/page4.html'
 })
-export class Page3 {
+export class Page4 {
   constructor() {
 
   }
@@ -13,7 +13,7 @@ export class Page3 {
     checkBT = () => {
          console.log("entered checkBT")
             cordova.plugins.diagnostic.isBluetoothEnabled(function(enabled){
-                console.log("Location is " + (enabled ? "enabled" : "disabled"));
+                console.log("Bluetooth is " + (enabled ? "enabled" : "disabled"));
             }, function(error){
                 console.error("The following error occurred: "+error)
             });      
@@ -22,16 +22,28 @@ export class Page3 {
          console.log("entered switchToBluetoothSettings")
             cordova.plugins.diagnostic.switchToBluetoothSettings()    
     }
-    initialize = () =>{
-        console.log("entered initialize")
-            function initializeSuccess(status) {
+    list = () => {
+         console.log("entered list")
+        bluetoothSerial.list(
+            function(results) {
+                console.log(JSON.stringify(results));
+            },
+            function(error) {
+                console.log(JSON.stringify(error));
+            }
+        );   
+    }
+    discoverUnpaired = () =>{
+        console.log("entered discoverUnpaired")
+            function success(retData) {
             console.log("entered initializeSuccess")
-                alert("status: " + status)
+            debugger
+                console.log("retData: " + retData)
             }
 
-            function initializeError(error) {
+            function failure(error) {
                 console.log("entered initializeError")
-                alert('code: '    + error.code    + '\n' +
+                console.log('code: '    + error.code    + '\n' +
                     'message: ' + error.message + '\n');
             }
             let params = {
@@ -39,40 +51,7 @@ export class Page3 {
                             "statusReceiver": false
                          }
 
-           bluetoothle.initialize(initializeSuccess, initializeError,params)
+           bluetoothSerial.discoverUnpaired(success, failure);
     }
-    startScan = () =>{
-        console.log("entered startScan")
-           function startScanSuccess(status) {
-            console.log("entered startScanSuccess")
-                alert("status: " + status)
-           }
 
-           function startScanError(error) {
-                console.log("entered startScanError")
-                alert('code: '    + error.code    + '\n' +
-                    'message: ' + error.message + '\n')
-           }
-           let params = {
-                    "services": [
-                        "180D",
-                        "180F"
-                    ],
-                    "allowDuplicates": true,
-                    "scanMode": bluetoothle.SCAN_MODE_BALANCED,
-                    "matchMode": bluetoothle.MATCH_MODE_AGGRESSIVE,
-                    "matchNum": bluetoothle.MATCH_NUM_MAX_ADVERTISEMENT,
-                    "callbackType": bluetoothle.CALLBACK_TYPE_ALL_MATCHES
-                    }  
-
-           bluetoothle.startScan(startScanSuccess, startScanError, params)
-    }
-    stopScan = () => {
-        function stopScanError(error) {
-        console.log("entered stopScanError")
-        alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n')
-        }
-        bluetoothle.stopScan((status)=> console.log("stopsacn success status:"+ status) , stopScanError);
-    }
 }

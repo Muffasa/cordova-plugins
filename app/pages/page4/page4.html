@@ -1,17 +1,17 @@
 
 <ion-navbar *navbar>
   <ion-title>
-    BlueTooth
+    BlueTooth serial
   </ion-title>
 </ion-navbar>
 
-<ion-content class="page3">
+<ion-content class="page4">
+ <p>docs of plugin: https://github.com/don/BluetoothSerial </p>
  <p>device uuid: {{deviceUuid}}</p>
  <ion-list>
      <button ion-item (click)="checkBT()">checkBT</button>
      <button ion-item (click)="switchToBluetoothSettings()">switchToBluetoothSettings</button>
-     <button ion-item (click)="initialize()">initialize</button>
-     <button ion-item (click)="startScan()">startScan</button>
-     <button ion-item (click)="stopScan()">stopScan</button>
+     <button ion-item (click)="list()">list</button>
+     <button ion-item (click)="discoverUnpaired()">discoverUnpaired</button>
  </ion-list>    
 </ion-content>

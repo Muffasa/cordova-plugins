@@ -2,6 +2,7 @@ import {Page} from 'ionic-framework/ionic';
 import {Page1} from '../page1/page1';
 import {Page2} from '../page2/page2';
 import {Page3} from '../page3/page3';
+import {Page4} from '../page4/page4';
 
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
 import {Type} from 'angular2/core';
@@ -16,7 +17,8 @@ export class TabsPage {
   tab1Root: Type = Page1;
   tab2Root: Type = Page2;
   tab3Root: Type = Page3;
-
+  tab4Root: Type = Page4;
+  
   constructor() {
 
   }

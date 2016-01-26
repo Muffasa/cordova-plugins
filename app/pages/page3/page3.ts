@@ -13,7 +13,7 @@ export class Page3 {
     checkBT = () => {
          console.log("entered checkBT")
             cordova.plugins.diagnostic.isBluetoothEnabled(function(enabled){
-                console.log("Location is " + (enabled ? "enabled" : "disabled"));
+                console.log("Bluetooth is " + (enabled ? "enabled" : "disabled"));
             }, function(error){
                 console.error("The following error occurred: "+error)
             });      
