@@ -44,7 +44,7 @@ export class Page2 {
                             'message: ' + error.message + '\n');
                     }
 
-                    navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout:10000});
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout:30000});
             }
         }
   }
