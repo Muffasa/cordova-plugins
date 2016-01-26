@@ -59,12 +59,20 @@ export class Page3 {
                         "180F"
                     ],
                     "allowDuplicates": true,
-                    "scanMode": bluetoothle.SCAN_MODE_LOW_LATENCY,
+                    "scanMode": bluetoothle.SCAN_MODE_BALANCED,
                     "matchMode": bluetoothle.MATCH_MODE_AGGRESSIVE,
                     "matchNum": bluetoothle.MATCH_NUM_MAX_ADVERTISEMENT,
                     "callbackType": bluetoothle.CALLBACK_TYPE_ALL_MATCHES
                     }  
 
            bluetoothle.startScan(startScanSuccess, startScanError, params)
+    }
+    stopScan = () => {
+        function stopScanError(error) {
+        console.log("entered stopScanError")
+        alert('code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n')
+        }
+        bluetoothle.stopScan((status)=> console.log("stopsacn success status:"+ status) , stopScanError);
     }
 }
