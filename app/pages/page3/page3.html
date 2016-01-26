@@ -1,10 +1,16 @@
 
 <ion-navbar *navbar>
   <ion-title>
-    Tab 3
+    BlueTooth
   </ion-title>
 </ion-navbar>
 
 <ion-content class="page3">
-
+ <p>device uuid: {{deviceUuid}}</p>
+ <ion-list>
+     <button ion-item (click)="checkBT()">checkBT</button>
+     <button ion-item (click)="switchToBluetoothSettings()">switchToBluetoothSettings</button>
+     <button ion-item (click)="initialize()">initialize</button>
+     <button ion-item (click)="startScan()">startScan</button>
+ </ion-list>    
 </ion-content>
